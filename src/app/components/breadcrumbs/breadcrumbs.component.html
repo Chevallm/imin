@@ -1,0 +1,10 @@
+<section>
+    @for (breacrumb of bs.getPath(); track $index; let last = $last) {
+        <a [routerLink]="breacrumb.link">
+            {{breacrumb.label}}
+        </a>
+        @if (!last) {
+            <span>></span>
+        }
+    }
+</section>

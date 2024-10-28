@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { BreadcrumbsService } from '../../services/breadcrumbs.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -12,7 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MatchComponent {
 
-  private title = inject(Title);
+  private breadcrumbsService = inject(BreadcrumbsService);
+
   private route = inject(ActivatedRoute);
   private matchId = this.route.snapshot.params['id'];
   protected match = {
@@ -26,7 +27,10 @@ export class MatchComponent {
   
 
   constructor() {
-    this.title.setTitle(this.title.getTitle() + ' - ' + this.matchId);
+    this.breadcrumbsService.setPath([
+      {label: 'Home', link: ['']},
+      {label: 'Matches', link: ['matches']},
+      {label: this.matchId, link: ['matches', this.matchId]}])
   }
 
 }

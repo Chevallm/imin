@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { max, Observable, of } from 'rxjs';
 import { Match } from '../../types/Match';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { BreadcrumbsService } from '../../services/breadcrumbs.service';
 
 @Component({
   selector: 'app-matches',
@@ -12,6 +13,8 @@ import { RouterModule } from '@angular/router';
   styleUrl: './matches.component.scss'
 })
 export class MatchesComponent {
+
+  private breadcrumbsService = inject(BreadcrumbsService);
 
   protected matches$: Observable<Match[]> = of([
     {
@@ -47,5 +50,18 @@ export class MatchesComponent {
       participants: ['Maxime', 'Yoann', 'Ismail', 'Moncef', 'Nicolas', 'Hugo']
     }
   ]);
+
+  constructor() {
+    this.breadcrumbsService.setPath([
+      {
+        label: 'Home',
+        link: ['']
+      },
+      {
+        label: 'Matches',
+        link: ['matches']
+      }
+    ])
+  }
 
 }
