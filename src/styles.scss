@@ -14,3 +14,28 @@ html, body {
 .gratina {
     font-family: 'Gratina';
 }
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    row-gap: 5px;
+
+    label {
+        
+    }
+    
+    input {
+        outline: 0;
+        border-bottom: 1px solid #000;
+
+        &:focus {
+            border-bottom-width: 2px;
+            border-bottom-color: rgb(250 204 21);
+        }
+    }
+}
+
+// input:focus-visible {
+//     outline: 0;
+// }

@@ -1,0 +1,35 @@
+<section class="w-full shadow-lg p-10 rounded-lg flex">
+    <section class="flex flex-col">
+        <section class="form-field flex">
+            <label for="description">Description</label>
+            <input id="description" type="text">
+        </section>
+        <section class="flex gap-4">
+            <button class="rounded-full bg-yellow-500 px-4 py-2" (click)="typeDate.set('known')">Date
+                connue</button>
+            <button class="rounded-full bg-yellow-500 px-4 py-2" (click)="typeDate.set('unknown')">Sondage</button>
+        </section>
+        @if (typeDate() === 'known') {
+        <section class="form-field">
+            <label for="description">Quand?</label>
+            <input id="description" type="date">
+        </section>
+        <section class="form-field">
+            <label for="description">A quelle heure?</label>
+            <input id="description" type="time">
+        </section>
+        }
+        @if (typeDate() === 'unknown') {
+        <section>
+            <section>
+                <label for="date-add">Ajouter un jour</label>
+                <input id="date-add" type="date">
+            </section>
+        </section>
+        }
+        <section class="form-field">
+            <label for="description">Combien de participants ?</label>
+            <input id="description" type="number" min="0" value="1">
+        </section>
+    </section>
+</section>
